@@ -16,7 +16,12 @@ steps:
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
-
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+    vstsFeed: 'bc363ab1-a45a-42b5-9884-8f44d75d005b/621c974e-063f-458c-97e4-686f5f8c27f5'
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
   inputs:
